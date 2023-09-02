@@ -16,6 +16,7 @@ import imb.pr3.lh.entity.Alquiler;
 import imb.pr3.lh.service.IAlquilerService;
 
 //http://localhost:8080/api/v1/alquileres
+
 @RestController
 @RequestMapping("/api/v1")
 public class AlquilerController {
