@@ -1,7 +1,6 @@
 package imb.pr3.lh.service.jpa;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +21,9 @@ public class AlquilerService implements IAlquilerService {
 
 	@Override
 	public Alquiler mostrarAlquilerPorId(Integer id) {
-		Optional<Alquiler>optional;
-		optional = alquilerRepository.findById(id);
-		if(optional.isPresent()) {
-			return optional.get();
-		}else {
-			return null;
-		}
-	}
+		 return alquilerRepository.findById(id).orElse(null);
+    }
+	
 
 	@Override
 	public void crearAlquiler(Alquiler alquiler) {
