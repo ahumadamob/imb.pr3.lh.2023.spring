@@ -24,7 +24,6 @@ public class AlquilerService implements IAlquilerService {
 		 return alquilerRepository.findById(id).orElse(null);
     }
 	
-
 	@Override
 	public void crearAlquiler(Alquiler alquiler) {
 	    alquilerRepository.save(alquiler);
