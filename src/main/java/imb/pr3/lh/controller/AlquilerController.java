@@ -49,6 +49,5 @@ public class AlquilerController {
 	@DeleteMapping("/alquileres/{id}")
 	public void eliminarAlquiler(@PathVariable("id") Integer id) {
 		alquilerService.eliminarAlquiler(id);
-	}
-	
+	}	
 }
