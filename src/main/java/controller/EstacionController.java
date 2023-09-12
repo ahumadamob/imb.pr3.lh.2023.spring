@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,9 +26,21 @@ public class EstacionController {
 	private IEstacion EstacionService;
 	
 	@GetMapping("/estacion")
-	public List<Estacion> mostrarTodos(){
-		return EstacionService.mostrarEstacion();
+	public APIResponse<List<Estacion>> mostrarTodos(){
+		
+		List<String> messages = new ArrayList<>();
+		messages.add("Se muestra el listado correctamente");
+		
+		List<Estacion> listadoEstacion = EstacionService.mostrarEstacion();
+		
+		APIResponse<List<Estacion>> response = new APIResponse<>(200, messages, listadoEstacion);	
+		response.setStatus(0);
+		response.setMessages(messages);
+		response.setData(EstacionService.mostrarEstacion());
+		return response;
+		
 	}
+	
 	
 	@GetMapping("/estacion/{id}")
 	public Estacion mostrarEstacionPorId(@PathVariable Integer id) {
