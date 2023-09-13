@@ -17,7 +17,7 @@ import entity.Estacion;
 import service.IEstacion;
 
 
-//http://localhost:8080/app/v1/estacion
+//http://localhost:8081/app/v1/estacion
 
 @RestController
 @RequestMapping("/app/v1")
@@ -29,7 +29,7 @@ public class EstacionController {
 	public APIResponse<List<Estacion>> mostrarTodos(){
 		
 		List<String> messages = new ArrayList<>();
-		messages.add("Se muestra el listado correctamente");
+		messages.add("Se muestra el listado de las estaciones correctamente");
 		
 		List<Estacion> listadoEstacion = EstacionService.mostrarEstacion();
 		
@@ -42,24 +42,40 @@ public class EstacionController {
 	}
 	
 	
-	@GetMapping("/estacion/{id}")
-	public Estacion mostrarEstacionPorId(@PathVariable Integer id) {
-		return EstacionService.mostrarEstacionPorId(id);
+	@GetMapping("/{id}")
+	public APIResponse<Estacion> mostrarEstacionPorId(@PathVariable Integer id) {
+		List<String> messages = new ArrayList<>();
+		Integer status;
+			//message.add("se muestra el listado correctamente");
+		Estacion EstacionPorId = EstacionService.mostrarEstacionPorId(id);
+		if(EstacionPorId == null) {
+			//Devolver un error
+			messages.add("No se encuentra una estacion con el ID propocionado");
+			status = 404;
+			
+		}else {
+			status=200;
+			//messages.add("No se encuentra una estacion con el ID proporcionado")
+		}
+		APIResponse<Estacion> response = new APIResponse<>(200, messages, EstacionPorId);
+		
+		return response;
+							
 	}
 	
-	@PostMapping("/estacion")
+	@PostMapping("/")
 	public Estacion crearEstacion(@RequestBody Estacion estacion) {
 		EstacionService.crearEstacion(estacion);
 		return estacion;
 	}
 	
-	@PutMapping("/estacion")
+	@PutMapping("/{id}")
 	public Estacion modificarEstacion(@RequestBody Estacion estacion) {
 		EstacionService.modificarEstacion(estacion);
 		return estacion;
 	}
 	
-	@DeleteMapping("/estacion/{id}")
+	@DeleteMapping("/{id}")
 	public void eliminarEstacion(@PathVariable("id") Integer id) {
 		EstacionService.eliminarEstacion(id);
 		}
