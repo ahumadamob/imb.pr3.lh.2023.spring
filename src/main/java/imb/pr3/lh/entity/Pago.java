@@ -15,9 +15,11 @@ public class Pago {
     private Integer medioDePagoId;
     private LocalDateTime fechaDePago;
     private Double monto;
-	public void setId(Integer id2) {
-		// TODO Auto-generated method stub
-		
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public Integer getClienteId() {
 		return clienteId;
@@ -43,10 +45,6 @@ public class Pago {
 	public void setMonto(Double monto) {
 		this.monto = monto;
 	}
-	public Integer getId() {
-		return id;
-	}
 
-    // Getters y setters
     
 }

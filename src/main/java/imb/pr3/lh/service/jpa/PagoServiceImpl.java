@@ -1,8 +1,9 @@
-package imb.pr3.lh.service;
+package imb.pr3.lh.service.jpa;
 import org.springframework.stereotype.Service;
 
 import imb.pr3.lh.entity.Pago;
 import imb.pr3.lh.repository.PagoRepository;
+import imb.pr3.lh.service.PagoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;

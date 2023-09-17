@@ -11,7 +11,7 @@ public class MedioDePago {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
-	private Boolean habilitado;
+	private boolean habilitado;
 
 	public Integer getId() {
 		return id;
@@ -25,11 +25,11 @@ public class MedioDePago {
 		this.nombre = nombre;
 	}
 
-	public Boolean getHabilitado() {
+	public boolean getHabilitado() {
 		return habilitado;
 	}
 
-	public void setHabilitado(Boolean habilitado) {
+	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
 	}
 
