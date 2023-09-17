@@ -10,9 +10,9 @@ public class Catalogo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String Marca;
-	private String Modelo;
-	private String Descripcion;
+	private String marca;
+	private String modelo;
+	private String descripcion;
 	public Integer getId() {
 		return id;
 	}
@@ -20,22 +20,25 @@ public class Catalogo {
 		this.id = id;
 	}
 	public String getMarca() {
-		return Marca;
+		return marca;
 	}
 	public void setMarca(String marca) {
-		Marca = marca;
+		this.marca = marca;
 	}
 	public String getModelo() {
-		return Modelo;
+		return modelo;
 	}
 	public void setModelo(String modelo) {
-		Modelo = modelo;
+		this.modelo = modelo;
 	}
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
+	
+	
+
 	
 }

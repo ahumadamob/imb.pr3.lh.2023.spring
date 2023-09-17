@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Inventario {
 	@Id
-	  @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String numeroSerie;
 	private boolean disponibilidad;

@@ -14,62 +14,63 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String Apellido;
-	private String Nombre;
-	private Date FechaNacimiento;
-	private String Domicilio;
-	private String Email;
-	private String Telefono;
-	private Integer ProvinciaId;
+	private String apellido;
+	private String nombre;
+	private Date fechaNacimiento;
+	private String domicilio;
+	private String email;
+	private String telefono;
+	private Integer provinciaId;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	public String getDomicilio() {
+		return domicilio;
+	}
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	public Integer getProvinciaId() {
+		return provinciaId;
+	}
+	public void setProvinciaId(Integer provinciaId) {
+		this.provinciaId = provinciaId;
+	}
 	
-	 public Integer getId() {
-		  return id;
-	  }
-	  public void setId(Integer id) {
-		  this.id = id;
-	  }
-	  public String getApellido() {
-		  return Apellido;
-	  }
-	  public void setApelliodo(String apellido) {
-		  this.Apellido = apellido;
-	  }
-	  public String getNombre() {
-		  return Nombre;
-	  }
-	  public void setNombre(String nombre) {
-		  this.Nombre = nombre;
-	  }
-	  public Date getFechaNacimiento() {
-		  return FechaNacimiento;
-	  }
-	  public void setFechaNacimiento(Date fechanacimiento) {
-		  this.FechaNacimiento = fechanacimiento;
-	  }
-	  public String getDomicilio() {
-		  return Domicilio;
-	  }
-	  public void setDomicilio (String domicilio) {
-		  this.Domicilio = domicilio;
-	  }
-	  public String getEmail() {
-		  return Email;
-	  }
-	  public void setEmail(String email) {
-		  this.Email = email;
-	  }
-	  public String getTelefono() {
-		  return Telefono;
-	  }
-	  public void setTelefono(String telefono) {
-		  this.Telefono = telefono;
-	  } 
-	  public Integer getProvinciaId() {
-		  return ProvinciaId;
-	  }
-	  public void ProvinciaId(Integer provinciaid) {
-		  this.ProvinciaId = provinciaid;
-	  }  
+
 	  
 
 }
