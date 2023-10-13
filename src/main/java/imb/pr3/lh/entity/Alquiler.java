@@ -94,5 +94,4 @@ public class Alquiler {
   public void setFechaHoraLlegada(LocalDateTime fechaHoraLlegada) {
 	  this.fechaHoraLlegada = fechaHoraLlegada;
   }
-  
 }
