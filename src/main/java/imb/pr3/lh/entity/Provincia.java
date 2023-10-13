@@ -4,7 +4,7 @@ package imb.pr3.lh.entity;
 public class Provincia {
 	 private Integer id;
 	 private String nombre;
-	 private Integer provinciaId;
+	 private Integer PaisId;
 	public Integer getId() {
 		return id;
 	}
@@ -17,11 +17,11 @@ public class Provincia {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Integer getProvinciaId() {
-		return provinciaId;
+	public Integer getPaisId() {
+		return PaisId;
 	}
-	public void setProvinciaId(Integer provinciaId) {
-		this.provinciaId = provinciaId;
+	public void setPaisId(Integer provinciaId) {
+		this.PaisId = provinciaId;
 	}
 	 
 	 
