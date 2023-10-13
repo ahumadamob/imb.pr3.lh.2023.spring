@@ -7,7 +7,7 @@ public interface PagoService {
     List<Pago> buscarTodos();
     public Pago buscarPorId(Integer id);
     public Pago guardar(Pago pago);
-    public void eliminar(Integer id);
+    public Pago eliminar(Integer id);
     public boolean existe(Integer id);
     
 }

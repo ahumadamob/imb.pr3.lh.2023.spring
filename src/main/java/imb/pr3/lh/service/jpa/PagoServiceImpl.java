@@ -32,8 +32,9 @@ public class PagoServiceImpl implements PagoService {
 
 
 	@Override
-	public void eliminar(Integer id) {
+	public Pago eliminar(Integer id) {
 		pagoRepository.deleteById(id);
+		return null;
 				
 	}
 
