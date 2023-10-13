@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +42,7 @@ public class AlquilerController {
     }
 	
 	@PostMapping("")
-	public ResponseEntity<APIResponse<Alquiler>> crearAlquiler(@RequestBody Alquiler alquiler, BindingResult result){
+	public ResponseEntity<APIResponse<Alquiler>> crearAlquiler(@RequestBody Alquiler alquiler){
 		return alquilerService.existe(alquiler.getId()) ? ResponseUtil.badRequest("No se pudo crear el alquiler, el Id ingresado ya existe")
 				: ResponseUtil.created(alquilerService.guardar(alquiler));
 	}
