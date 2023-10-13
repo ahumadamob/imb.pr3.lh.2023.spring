@@ -79,4 +79,5 @@ public class AlquilerController {
 	public ResponseEntity<APIResponse<Alquiler>> handleConstraintViolationException(ConstraintViolationException ex) {
 		return ResponseUtil.handleConstraintException(ex);
 	}
+
 }
