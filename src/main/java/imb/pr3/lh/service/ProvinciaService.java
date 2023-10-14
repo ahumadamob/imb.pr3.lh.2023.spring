@@ -5,9 +5,9 @@ import java.util.List;
 import imb.pr3.lh.entity.Provincia;
 
 public interface ProvinciaService {
-	List<Provincia> mostrarTodos();
-	Provincia mostrarPorId(Integer id);
-	Provincia crearProvincia(Provincia provincia);
-	Provincia modificarProvincia(Integer id, Provincia provincia);
-	void eliminarProvincia(Integer id);
+	public List<Provincia> buscarTodos();
+	public Provincia buscarPorId(Integer id);
+	public Provincia guardar(Provincia provincia);
+	public boolean existe(Integer id);
+	public Provincia eliminar(Integer id);
 }

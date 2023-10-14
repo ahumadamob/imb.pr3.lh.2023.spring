@@ -5,6 +5,7 @@ public class Provincia {
 	 private Integer id;
 	 private String nombre;
 	 private Integer PaisId;
+	 
 	public Integer getId() {
 		return id;
 	}
@@ -20,8 +21,8 @@ public class Provincia {
 	public Integer getPaisId() {
 		return PaisId;
 	}
-	public void setPaisId(Integer provinciaId) {
-		this.PaisId = provinciaId;
+	public void setPaisId(Integer paisId) {
+		this.PaisId = paisId;
 	}
 	 
 	 
