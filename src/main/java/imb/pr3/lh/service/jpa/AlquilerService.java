@@ -1,6 +1,7 @@
 package imb.pr3.lh.service.jpa;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import imb.pr3.lh.entity.Alquiler;
 import imb.pr3.lh.repository.AlquilerRepository;
 import imb.pr3.lh.service.IAlquilerService;
+
 @Service
 public class AlquilerService implements IAlquilerService {
 	
@@ -15,28 +17,29 @@ public class AlquilerService implements IAlquilerService {
 	private AlquilerRepository alquilerRepository;
 	
 	@Override
-	public List<Alquiler> mostrarAlquileres() {
+	public List<Alquiler> buscarTodos() {
 		return alquilerRepository.findAll();
 	}
 
 	@Override
-	public Alquiler mostrarAlquilerPorId(Integer id) {
-		 return alquilerRepository.findById(id).orElse(null);
+	public Alquiler buscarPorId(Integer id) {
+		 Optional<Alquiler> optional = alquilerRepository.findById(id);
+		 return optional.orElse(null);
     }
 	
-
 	@Override
-	public void crearAlquiler(Alquiler alquiler) {
-	    alquilerRepository.save(alquiler);
+	public Alquiler guardar(Alquiler alquiler) {
+		 return alquilerRepository.save(alquiler);
 	}
 
 	@Override
-	public void modificarAlquiler(Alquiler alquiler) {
-		 alquilerRepository.save(alquiler);
-	}
-
-	@Override
-	public void eliminarAlquiler(Integer id) {
+	public void eliminar(Integer id) {
 		 alquilerRepository.deleteById(id);
 	}
+	
+	@Override
+	public boolean existe(Integer id) {
+		 return id != null && alquilerRepository.existsById(id);
+	}
+
 }
