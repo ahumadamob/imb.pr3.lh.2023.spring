@@ -1,6 +1,7 @@
 package imb.pr3.lh.service.jpa;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,30 +13,44 @@ import imb.pr3.lh.service.IPaisService;
 @Service
 public class PaisServiceImpl implements IPaisService {
 	
-	@Autowired
-	private PaisRepository repo;
+@Autowired
+private PaisRepository paisRepository;
 
 	@Override
 	public List<Pais> buscarTodos() {
-		return repo.findAll();
+		return paisRepository.findAll();
+		
 	}
 
 	@Override
 	public Pais buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
+		Optional<Pais> optional;
+		optional = paisRepository.findById(id);
+		if (optional.isPresent()) {
+			return optional.get();
+		}else {
+			return null;
+		}
+	
+	
+	}
+
+	@Override
+	public Pais guardar(Pais pais) {
+		return paisRepository.save(pais);
+		
+	}
+
+	@Override
+	public Pais eliminar(Integer id) {
+		paisRepository.deleteById(id);
 		return null;
 	}
 
 	@Override
-	public void guardar(Pais pais) {
-		// TODO Auto-generated method stub
-		
+	public boolean existe(Integer id) {
+	
+		return paisRepository.existsById(id);
+	
 	}
-
-	@Override
-	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
