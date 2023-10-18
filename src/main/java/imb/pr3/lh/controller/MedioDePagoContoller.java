@@ -75,5 +75,4 @@ public class MedioDePagoContoller {
 	public ResponseEntity<APIResponse<MedioDePago>> handleConstraintViolationException(ConstraintViolationException ex) {
 		return ResponseUtil.handleConstraintException(ex);
 	}
-	
 }
