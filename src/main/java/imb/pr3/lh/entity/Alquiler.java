@@ -2,7 +2,6 @@ package imb.pr3.lh.entity;
 
 import java.time.LocalDateTime;
 
-import entity.Estacion;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

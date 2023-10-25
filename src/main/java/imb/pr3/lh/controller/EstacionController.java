@@ -1,4 +1,4 @@
-package controller;
+package imb.pr3.lh.controller;
 
 import java.util.ArrayList;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import entity.Estacion;
-import service.IEstacion;
+import imb.pr3.lh.entity.Estacion;
+import imb.pr3.lh.service.IEstacion;
 
 
 //http://localhost:8081/app/v1/estacion

@@ -18,13 +18,13 @@ public class MedioDePagoService implements IMedioDePago {
 
 	@Override
 
-	public List<MedioDePago> mostrarMedioDePago() {
+	public List<MedioDePago> buscar() {
 
 		return medioDePagoRepository.findAll();
 	}
 
 	@Override
-	public MedioDePago mostrarMedioDePagoPorId(Integer id) {
+	public MedioDePago buscarPorId(Integer id) {
 		Optional<MedioDePago> optional;
 		optional = medioDePagoRepository.findById(id);
 		if (optional.isPresent()) {
@@ -35,17 +35,21 @@ public class MedioDePagoService implements IMedioDePago {
 	}
 
 	@Override
-	public void crearMedioDePago(MedioDePago medioDePago) {
-		medioDePagoRepository.save(medioDePago);
+	public MedioDePago guardar(MedioDePago medioDePago) {
+		
+		 return medioDePagoRepository.save(medioDePago);
 	}
 
-	@Override
-	public void modificarMedioDePago(MedioDePago medioDePago) {
-		medioDePagoRepository.save(medioDePago);
-	}
 
 	@Override
-	public void eliminarMedioDePago(Integer id) {
+	public void eliminar(Integer id) {
+		
 		medioDePagoRepository.deleteById(id);
+	}
+
+	@Override
+	public boolean existe(Integer id) {
+		
+		return	medioDePagoRepository.existsById(id);
 	}
 }
