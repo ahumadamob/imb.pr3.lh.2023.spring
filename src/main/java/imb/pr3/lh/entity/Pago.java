@@ -4,6 +4,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Pago {
@@ -12,9 +15,12 @@ public class Pago {
     private Integer id;
 
     private Integer clienteId;
-    private Integer medioDePagoId;
+    
+    @ManyToOne
+    private MedioDePago medioDePago;
     private LocalDateTime fechaDePago;
     private Double monto;
+    
 	public Integer getId() {
 		return id;
 	}
@@ -27,12 +33,7 @@ public class Pago {
 	public void setClienteId(Integer clienteId) {
 		this.clienteId = clienteId;
 	}
-	public Integer getMedioDePagoId() {
-		return medioDePagoId;
-	}
-	public void setMedioDePagoId(Integer medioDePagoId) {
-		this.medioDePagoId = medioDePagoId;
-	}
+
 	public LocalDateTime getFechaDePago() {
 		return fechaDePago;
 	}
