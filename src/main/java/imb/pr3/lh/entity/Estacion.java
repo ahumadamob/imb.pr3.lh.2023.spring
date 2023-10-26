@@ -1,4 +1,4 @@
-package entity;
+package imb.pr3.lh.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
