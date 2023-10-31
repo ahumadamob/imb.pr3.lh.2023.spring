@@ -18,13 +18,13 @@ import imb.pr3.lh.service.IMedioDePago;
 import jakarta.validation.ConstraintViolationException;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/mediodepago")
 public class MedioDePagoContoller {
 
 	@Autowired
 	private IMedioDePago medioDePagoService;
 
-	@GetMapping("/medioDePago")
+	@GetMapping("")
 	public ResponseEntity<APIResponse<List<MedioDePago>>> mostrarTodos() {
 		List<MedioDePago> medioDePago = medioDePagoService.buscar();
 		
@@ -38,7 +38,7 @@ public class MedioDePagoContoller {
 				: ResponseUtil.badRequest("el Id proporcionado no es valido");
 	}
 
-	@PostMapping("/medioDePago")
+	@PostMapping("")
 	public ResponseEntity<APIResponse<MedioDePago>> crearMedioDePago(@RequestBody MedioDePago medioDePago) {
 		if(medioDePagoService.existe(medioDePago.getId())) {
 			return ResponseUtil.badRequest("este medio de pago ya existe");
@@ -47,14 +47,14 @@ public class MedioDePagoContoller {
 		}
 	}
 
-	@PutMapping("/medioDePago")
+	@PutMapping("")
 	public ResponseEntity<APIResponse<MedioDePago>> modificarMedioDePago(@RequestBody MedioDePago medioDePago) {
 	   return medioDePagoService.existe(medioDePago.getId()) 
 			   ? ResponseUtil.success(medioDePagoService.guardar(medioDePago)) 
-			   : ResponseUtil.badRequest("no se pudo actualizar"+medioDePago+", el Id proporcionado no es valido");
+			   : ResponseUtil.badRequest("no se pudo actualizar "+medioDePago.getId()+", el Id proporcionado no es valido");
 	}
 
-	@DeleteMapping("/medioDePago/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<APIResponse<MedioDePago>> eliminarMedioDePago(@PathVariable("id") Integer id) {
 		 if(medioDePagoService.existe(id)) {
 			
