@@ -6,6 +6,7 @@ import imb.pr3.lh.entity.Estacion;
 
 public interface IEstacion {
 	
+/*<<<<<<< HEAD
 	/*public List<Estacion> mostrarEstacion();
 	
 	public Estacion mostrarEstacionPorId(Integer Id);
@@ -24,3 +25,11 @@ public interface IEstacion {
     public boolean existe(Integer id);
 }
 
+//=======
+	/*public List<Estacion> mostrarEstacion();
+	public Estacion mostrarEstacionPorId(Integer Id);	
+	public void crearEstacion(Estacion estacion);
+	public void modificarEstacion(Estacion estacion);
+	public void eliminarEstacion(Integer id);
+}
+//>>>>>>> master*/

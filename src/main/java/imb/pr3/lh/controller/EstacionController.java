@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,13 +20,11 @@ import imb.pr3.lh.service.IEstacion;
 import jakarta.validation.ConstraintViolationException;
 
 
-
-//http://localhost:8081/app/v1/estacion
-
 @RestController
 @RequestMapping("/app/v1")
 public class EstacionController {
 	
+
 	@Autowired
 	private IEstacion EstacionService;
 	
@@ -38,6 +37,7 @@ public class EstacionController {
 	
 	
 	@GetMapping("/{id}")
+
 	public ResponseEntity<APIResponse<Estacion>> mostrarEstacionPorId(@PathVariable Integer id) {
 		
 		return (EstacionService.existe(id))? ResponseUtil.success(EstacionService.buscarPorId(id)):ResponseUtil.notFound("Estacion No Encontrada o ID no ingresado"); 			
@@ -67,6 +67,4 @@ public class EstacionController {
 	public ResponseEntity<APIResponse<Estacion>> handleConstraintViolationException(ConstraintViolationException ex){
 		return ResponseUtil.handleConstraintException(ex);
 	}
-	
-	
 }
