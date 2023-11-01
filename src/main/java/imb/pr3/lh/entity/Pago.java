@@ -14,7 +14,9 @@ public class Pago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer clienteId;
+    @ManyToOne
+    @JoinColumn(name="cliente_id")
+    private Cliente cliente;
     
     @ManyToOne
     private MedioDePago medioDePago;
@@ -27,13 +29,20 @@ public class Pago {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getClienteId() {
-		return clienteId;
-	}
-	public void setClienteId(Integer clienteId) {
-		this.clienteId = clienteId;
-	}
 
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public MedioDePago getMedioDePago() {
+		return medioDePago;
+	}
+	public void setMedioDePago(MedioDePago medioDePago) {
+		this.medioDePago = medioDePago;
+	}
 	public LocalDateTime getFechaDePago() {
 		return fechaDePago;
 	}

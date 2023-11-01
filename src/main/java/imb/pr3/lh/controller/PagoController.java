@@ -11,13 +11,13 @@ import imb.pr3.lh.service.PagoService;
 import jakarta.validation.ConstraintViolationException;
 
 @RestController
-@RequestMapping("/pagos")
+@RequestMapping("/api/v1/pago")
 public class PagoController {
 
     @Autowired
     private PagoService pagoService;
 
-    @GetMapping("/pago")
+    @GetMapping
     public ResponseEntity<APIResponse<List<Pago>>> mostrarTodos() {
         
     	List<Pago>pago=pagoService.buscarTodos();
@@ -32,19 +32,18 @@ public class PagoController {
 		    	
     }
 
-    @PostMapping("/")
-    
-    public ResponseEntity<APIResponse<Pago>> crearPago(@PathVariable Pago pago ) {
+    @PostMapping    
+    public ResponseEntity<APIResponse<Pago>> crearPago(@RequestBody Pago pago ) {
     	return (pagoService.existe(pago.getId()))? ResponseUtil.badRequest("Pago ya Existente") : ResponseUtil.created(pagoService.guardar(pago));
     }
     
-	@PutMapping("")
+	@PutMapping
 	public ResponseEntity<APIResponse<Pago>> modificarPago(@RequestBody Pago pago){
 		return pagoService.existe(pago.getId()) ? ResponseUtil.success(pagoService.guardar(pago)) : ResponseUtil.badRequest("No se pudo actualizar el pago, el id ingresado no existe");
 	}
 	
-	@DeleteMapping("/Pago/{id}")
-	public ResponseEntity<APIResponse<MedioDePago>> eliminarMedioDePago(@PathVariable("id") Integer id) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<APIResponse<MedioDePago>> eliminarPago(@PathVariable("id") Integer id) {
 		 if(pagoService.existe(id)) {
 			
 			 	pagoService.eliminar(id);
