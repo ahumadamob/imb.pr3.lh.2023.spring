@@ -57,7 +57,7 @@ public class EstacionController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<APIResponse<Estacion>> eliminarEstacion(@RequestBody Integer id) {
+	public ResponseEntity<APIResponse<Estacion>> eliminarEstacion(@PathVariable Integer id) {
 		return EstacionService.existe(id)
 				?ResponseUtil.success(EstacionService.eliminar(id))
 				:ResponseUtil.badRequest("No se pudo eliminar");
