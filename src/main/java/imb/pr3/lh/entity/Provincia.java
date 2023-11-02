@@ -1,10 +1,17 @@
 package imb.pr3.lh.entity;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 public class Provincia {
-	 private Integer id;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	 private String nombre;
-	 private Integer PaisId;
+	 @ManyToOne
+	 private Pais PaisId;
 	 
 	public Integer getId() {
 		return id;
@@ -17,13 +24,12 @@ public class Provincia {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public Integer getPaisId() {
+	}	
+	public Pais getPaisId() {
 		return PaisId;
 	}
-	public void setPaisId(Integer paisId) {
-		this.PaisId = paisId;
+	public void setPaisId(Pais paisId) {
+		PaisId = paisId;
 	}
-	 
-	 
+	
 }

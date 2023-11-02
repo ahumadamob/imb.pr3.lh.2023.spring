@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import imb.pr3.lh.entity.Provincia;
 import imb.pr3.lh.repository.ProvinciaRepository;
-import imb.pr3.lh.service.ProvinciaService;
+import imb.pr3.lh.service.IProvinciaService;
 
-public class ProvinciaServiceJPA implements ProvinciaService {
+public class ProvinciaServiceJPA implements IProvinciaService {
 	
 @ Autowired
-
 private ProvinciaRepository provinciaRepository;
 
 	@Override
@@ -42,10 +41,9 @@ private ProvinciaRepository provinciaRepository;
 	}
 
 	@Override
-	public Provincia eliminar(Integer id) {
-		provinciaRepository.deleteById(id);;
-		return null;
-		
+	public void eliminar(Integer id) {
+		provinciaRepository.deleteById(id);
+	
 	}
 
 }
