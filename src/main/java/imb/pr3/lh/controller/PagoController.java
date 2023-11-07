@@ -36,10 +36,10 @@ public class PagoController {
     public ResponseEntity<APIResponse<Pago>> crearPago(@RequestBody Pago pago ) {
     	return (pagoService.existe(pago.getId()))? ResponseUtil.badRequest("Pago ya Existente") : ResponseUtil.created(pagoService.guardar(pago));
     }
- // Método que modifica un pago existente
- // Se verifica si existe un pago con el mismo id que el objeto recibido
- // Si existe, se actualiza el pago y se devuelve una respuesta exitosa con el pago actualizado
- // Si no existe, se devuelve una respuesta de error con un mensaje indicando que el id ingresado no existe
+ /* Método que modifica un pago existente
+  Se verifica si existe un pago con el mismo id que el objeto recibido
+  Si existe, se actualiza el pago y se devuelve una respuesta exitosa con el pago actualizado
+  Si no existe, se devuelve una respuesta de error con un mensaje indicando que el id ingresado no existe*/
 	@PutMapping
 	public ResponseEntity<APIResponse<Pago>> modificarPago(@RequestBody Pago pago){
 		return pagoService.existe(pago.getId()) ? ResponseUtil.success(pagoService.guardar(pago)) : ResponseUtil.badRequest("No se pudo actualizar el pago, el id ingresado no existe");
