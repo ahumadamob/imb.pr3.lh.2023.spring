@@ -15,33 +15,35 @@ public class PagoServiceImpl implements PagoService {
     private PagoRepository pagoRepository;
 
     @Override
-    public List<Pago> mostrarTodos() {
+    public List<Pago> buscarTodos() {
         return pagoRepository.findAll();
     }
 
     @Override
-    public Pago mostrarPorId(Integer id) {
-        return pagoRepository.findById(id).orElse(null);
+    public Pago buscarPorId(Integer id) {
+    	return pagoRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Pago crearPago(Pago pago) {
+    public Pago guardar(Pago pago) {
         return pagoRepository.save(pago);
     }
 
-    @Override
-    public Pago modificarPago(Integer id, Pago pago) {
-        if (pagoRepository.existsById(id)) {
-            pago.setId(id);
-            return pagoRepository.save(pago);
-        } else {
-            return null; // Manejo de error si el pago no existe
-        }
-    }
+
 
 	@Override
-	public void eliminarPago(Integer id) {
-		
+	public void eliminar(Integer id) {
+		pagoRepository.deleteById(id);
+				
+	}
+
+	@Override
+	public boolean existe(Integer id) {
+		if(id == null) {
+			return false;
+		}else {
+		return	pagoRepository.existsById(id);
+		}
 	}}
 
     
