@@ -31,6 +31,18 @@ public class InventarioController {
 		return inventario.isEmpty() ? ResponseUtil.notFound("No hay inventario :(") : ResponseUtil.success(inventario);
 	}
 	
+	@GetMapping("/inventario/disponible")
+	public ResponseEntity<APIResponse<List<Inventario>>>buscarTodosLosInventariosDisponibles() {
+		List<Inventario> inventariosDisponibles = inventarioService.buscarPorDisponible(true);
+		return inventariosDisponibles.isEmpty() ? ResponseUtil.notFound("No hay inventarios disponibles :(") : ResponseUtil.success(inventariosDisponibles);
+	}
+	
+	@GetMapping("/inventario/nodisponible")
+	public ResponseEntity<APIResponse<List<Inventario>>>buscarTodosLosInventariosNoDisponibles() {
+		List<Inventario> inventariosNoDisponibles = inventarioService.buscarPorDisponible(false);
+		return inventariosNoDisponibles.isEmpty() ? ResponseUtil.notFound("No hay inventarios NO disponibles :(") : ResponseUtil.success(inventariosNoDisponibles);
+	}	
+	
     @GetMapping("inventario/{id}")
     public ResponseEntity<APIResponse<Inventario>> buscarInventarioPorid(@PathVariable("id") Integer id){
     	Inventario inventario = inventarioService.buscarPorId(id);
@@ -46,6 +58,30 @@ public class InventarioController {
 	 public ResponseEntity<APIResponse<Inventario>> modificarInvenatrio(@RequestBody Inventario inventario){
 		return inventarioService.existe(inventario.getId()) ? ResponseUtil.success(inventarioService.guardar(inventario)) : ResponseUtil.badRequest("No podemos actualizar el inventario,porque el id ingresado no ha sido creado");
 	}
+	
+	@PutMapping("/inventario/marcardisponible/{id}")
+	public ResponseEntity<APIResponse<Inventario>>marcarInventarioDisponible(@PathVariable("id") Integer id){
+		if(inventarioService.existe(id)) {
+			Inventario inventario = inventarioService.buscarPorId(id);
+			inventario.setDisponibilidad(true);
+			inventarioService.guardar(inventario);
+			return ResponseUtil.success(inventario);
+		}else {
+			return ResponseUtil.badRequest("No podemos actualizar el inventario,porque el id ingresado no ha sido creado");
+		}
+	}
+
+	@PutMapping("/inventario/marcarnodisponible/{id}")
+	public ResponseEntity<APIResponse<Inventario>>marcarInventarioNoDisponible(@PathVariable("id") Integer id){
+		if(inventarioService.existe(id)) {
+			Inventario inventario = inventarioService.buscarPorId(id);
+			inventario.setDisponibilidad(false);
+			inventarioService.guardar(inventario);
+			return ResponseUtil.success(inventario);
+		}else {
+			return ResponseUtil.badRequest("No podemos actualizar el inventario,porque el id ingresado no ha sido creado");
+		}
+	}	
 	
 	@DeleteMapping("/inventario/{id}")
 	public ResponseEntity<APIResponse<Inventario>> eliminarInventario(@PathVariable("id") Integer id){
