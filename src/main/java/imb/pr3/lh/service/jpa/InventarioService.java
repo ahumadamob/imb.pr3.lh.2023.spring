@@ -19,6 +19,7 @@ public class InventarioService implements IInventarioService {
 	@Override
 	public List<Inventario> buscarTodos() {
 		return inventarioRepository.findAll();
+		//inventarioRepository.find
 	}
 
 	@Override
@@ -40,6 +41,11 @@ public class InventarioService implements IInventarioService {
 	@Override
 	public boolean existe(Integer id) {
 		 return id != null && inventarioRepository.existsById(id);
+	}
+
+	@Override
+	public List<Inventario> buscarPorDisponible(boolean disp) {
+		return inventarioRepository.findByDisponibilidad(disp);
 	}
 
 }
