@@ -1,6 +1,9 @@
 package imb.pr3.lh.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import imb.pr3.lh.entity.MedioDePago;
 
 /* este código define una interfaz llamada MedioDePagoRepository que hereda los métodos necesarios 
@@ -13,5 +16,6 @@ import imb.pr3.lh.entity.MedioDePago;
  */
 
 public interface MedioDePagoRepository extends JpaRepository<MedioDePago, Integer> {
+	public List<MedioDePago>findByActivo(boolean activo);
 
 }
