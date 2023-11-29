@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import imb.pr3.lh.entity.MedioDePago;
 import imb.pr3.lh.service.IMedioDePago;
 import jakarta.validation.ConstraintViolationException;
@@ -37,7 +38,19 @@ public class MedioDePagoContoller {
 		return (medioDePagoService.existe(id))? ResponseUtil.success(medioDePagoService.buscarPorId(id))
 				: ResponseUtil.badRequest("el Id proporcionado no es valido");
 	}
-
+	
+	@GetMapping("/mediodepago/activo")
+	public ResponseEntity<APIResponse<List<MedioDePago>>>buscarTodosLosMedioDePagosActivos() {
+		List<MedioDePago> medioDePagoActivos = medioDePagoService.buscarPorActivo(true);
+		return medioDePagoActivos.isEmpty() ? ResponseUtil.notFound("No hay medios de pagos activos") : ResponseUtil.success(medioDePagoActivos);
+	}
+	
+	@GetMapping("/mediodepago/noactivo")
+	public ResponseEntity<APIResponse<List<MedioDePago>>>buscarTodosLosMediosDePagoNoActivo() {
+		List<MedioDePago> medioDePagoNoActivo = medioDePagoService.buscarPorActivo(false);
+		return medioDePagoNoActivo.isEmpty() ? ResponseUtil.notFound("No hay medios de pagos NO activos") : ResponseUtil.success(medioDePagoNoActivo);
+	}	
+	
 	@PostMapping("")
 	public ResponseEntity<APIResponse<MedioDePago>> crearMedioDePago(@RequestBody MedioDePago medioDePago) {
 		if(medioDePagoService.existe(medioDePago.getId())) {
