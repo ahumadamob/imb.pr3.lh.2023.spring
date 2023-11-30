@@ -76,7 +76,12 @@ private PaisRepository paisRepository;
 		return paisRepository.existsById(id);
 	}
 	}
+	@Override
+	public List<Pais> buscarPorIdiomaOficial(String idiomaOficial) {
+	    return paisRepository.findByIdiomaOficial(idiomaOficial);
+	}
 } /*  El método existe toma un id como parámetro y verifica si un país con ese ID existe en la base de datos. 
       Utiliza el método existsById(id) proporcionado por PaisRepository para comprobar la existencia y 
       devuelve true si existe o false si no existe */
 
+  

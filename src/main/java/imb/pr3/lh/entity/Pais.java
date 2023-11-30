@@ -1,5 +1,6 @@
 package imb.pr3.lh.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Pais {
 	@NotBlank
 	private String nombre;
 	 private boolean habilitado;
-	 
+      		@NotBlank private String idiomaOficial;
 	 
 	public Integer getId() {
 		return id;
@@ -29,7 +30,14 @@ public class Pais {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
+	public String getIdiomaOficial() {
+		return idiomaOficial;
+	}
+
+	public void setIdiomaOficial(String idiomaOficial) {
+		this.idiomaOficial = idiomaOficial;
+	}
 	public boolean getHabilitado() {
 		return habilitado;
 	}
