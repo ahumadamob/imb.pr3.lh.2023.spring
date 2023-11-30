@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Pago {
@@ -22,7 +21,14 @@ public class Pago {
     private MedioDePago medioDePago;
     private LocalDateTime fechaDePago;
     private Double monto;
+    private boolean confirmado;
     
+	public boolean isConfirmado() {
+		return confirmado;
+	}
+	public void setConfirmado(boolean confirmado) {
+		this.confirmado = confirmado;
+	}
 	public Integer getId() {
 		return id;
 	}
