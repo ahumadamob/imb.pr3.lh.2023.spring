@@ -31,7 +31,18 @@ public class PagoController {
     	return (pagoService.existe(id))? ResponseUtil.success(pagoService.buscarPorId(id)) : ResponseUtil.notFound("Pago no Encontrado");
 		    	
     }
-
+    
+    
+    @GetMapping("/confirmados")
+    public ResponseEntity<APIResponse<List<Pago>>> mostrarPagosConfirmados() {
+        List<Pago> pagosConfirmados = pagoService.confirmado(true);
+        return (pagosConfirmados.isEmpty()) ? ResponseUtil.notFound("No se encontraron pagos confirmados") : ResponseUtil.success(pagosConfirmados);
+    }
+    @GetMapping("/noconfirmados")
+    public ResponseEntity<APIResponse<List<Pago>>> mostrarPagosNoConfirmados() {
+        List<Pago> pagosConfirmados = pagoService.confirmado(false);
+        return (pagosConfirmados.isEmpty()) ? ResponseUtil.notFound("No se encontraron pagos no confirmados") : ResponseUtil.success(pagosConfirmados);
+    }
     @PostMapping    
     public ResponseEntity<APIResponse<Pago>> crearPago(@RequestBody Pago pago ) {
     	return (pagoService.existe(pago.getId()))? ResponseUtil.badRequest("Pago ya Existente") : ResponseUtil.created(pagoService.guardar(pago));

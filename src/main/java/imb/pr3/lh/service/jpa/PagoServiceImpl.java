@@ -1,6 +1,6 @@
 package imb.pr3.lh.service.jpa;
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import imb.pr3.lh.entity.Pago;
 import imb.pr3.lh.repository.PagoRepository;
 import imb.pr3.lh.service.PagoService;
@@ -21,7 +21,7 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public Pago buscarPorId(Integer id) {
-    	return pagoRepository.findById(id).orElse(null);
+        return pagoRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -29,21 +29,27 @@ public class PagoServiceImpl implements PagoService {
         return pagoRepository.save(pago);
     }
 
+    @Override
+    public void eliminar(Integer id) {
+        pagoRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean existe(Integer id) {
+        if (id == null) {
+            return false;
+        } else {
+            return pagoRepository.existsById(id);
+        }
+    }
+
+    @Override
+    public List<Pago> confirmado(boolean confirmado) {
+        return pagoRepository.findAllByConfirmado(confirmado);
+    }
 
 
-	@Override
-	public void eliminar(Integer id) {
-		pagoRepository.deleteById(id);
-				
-	}
+}
 
-	@Override
-	public boolean existe(Integer id) {
-		if(id == null) {
-			return false;
-		}else {
-		return	pagoRepository.existsById(id);
-		}
-	}}
 
     
