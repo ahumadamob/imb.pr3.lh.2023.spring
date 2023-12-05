@@ -1,6 +1,7 @@
 package imb.pr3.lh.service.jpa;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,32 +16,42 @@ public class CatalogoService implements ICatalogoService {
 	private CatalogoRepository repo;
 
 	@Override
-	public List<Catalogo> mostrarTodos() {
+	public List<Catalogo> buscarTodos() {
 		return repo.findAll();
 	}
 
 	@Override
-	public List<Catalogo> mostrarPorld() {
-		// TODO Auto-generated method stub
-		return null;
+	 public Catalogo buscarPorId(Integer id) {		
+		return repo.findById(id).orElse(null);
+		
 	}
 
 	@Override
-	public List<Catalogo> crear() {
-		// TODO Auto-generated method stub
-		return null;
+	 public Catalogo guardar (Catalogo catalogo) {
+		return repo.save(catalogo);
+
 	}
 
 	@Override
-	public List<Catalogo> modificar() {
-		// TODO Auto-generated method stub
-		return null;
+	 public void eliminar(Integer id) {
+		repo.deleteById(id);
+	
 	}
 
 	@Override
-	public List<Catalogo> eliminar() {
+	public boolean existe(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		//return (Boolean) null;
+		
+		if(id==null) {
+			return false;
+		}else {
+			return repo.existsById(id);
+		}
+		
+		//return (id==null)? false : repo.existsById(id);
+		
+		
 	}
 
 }

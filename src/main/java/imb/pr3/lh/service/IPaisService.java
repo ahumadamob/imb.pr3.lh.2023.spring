@@ -5,9 +5,19 @@ import java.util.List;
 import imb.pr3.lh.entity.Pais;
 
 public interface IPaisService {
-	List<Pais> buscarTodos();
-	Pais buscarPorId(Integer id);
-	void guardar(Pais pais);
-	void eliminar(Integer id);
-
+	
+	
+	public List<Pais> buscarTodos();
+	
+	
+	public Pais buscarPorId(Integer id);
+	
+	
+	public Pais guardar(Pais pais);
+	
+	
+	public Pais eliminar(Integer id);
+	
+	
+	public boolean existe(Integer id);
 }

@@ -25,13 +25,8 @@ public class MedioDePagoService implements IMedioDePago {
 
 	@Override
 	public MedioDePago buscarPorId(Integer id) {
-		Optional<MedioDePago> optional;
-		optional = medioDePagoRepository.findById(id);
-		if (optional.isPresent()) {
-			return optional.get();
-		} else {
-			return null;
-		}
+		
+		return medioDePagoRepository.findById(id).orElse(null);
 	}
 
 	@Override
@@ -49,7 +44,10 @@ public class MedioDePagoService implements IMedioDePago {
 
 	@Override
 	public boolean existe(Integer id) {
-		
+		if(id == null) {
+			return false;
+		}else {
 		return	medioDePagoRepository.existsById(id);
+		}
 	}
 }
