@@ -34,13 +34,6 @@ public class AlquilerController {
 				: ResponseUtil.success(alquileres);
 	}
 	
-<<<<<<< HEAD
-	@DeleteMapping("/alquileres/{id}")
-	public void eliminarAlquiler(@PathVariable("id") Integer id) {
-		alquilerService.eliminarAlquiler(id);
-	}	
-}
-=======
     @GetMapping("{id}")
     public ResponseEntity<APIResponse<Alquiler>> buscarAlquilerPorid(@PathVariable("id") Integer id){
     	Alquiler alquiler = alquilerService.buscarPorId(id);
@@ -87,4 +80,3 @@ public class AlquilerController {
 	}
 
 }
->>>>>>> master
