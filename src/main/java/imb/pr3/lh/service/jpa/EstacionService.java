@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import imb.pr3.lh.entity.Estacion;
 import imb.pr3.lh.repository.EstacionRepository;
 import imb.pr3.lh.service.IEstacion;
 
+@Service
 public class EstacionService implements IEstacion{
 
 	@Autowired
