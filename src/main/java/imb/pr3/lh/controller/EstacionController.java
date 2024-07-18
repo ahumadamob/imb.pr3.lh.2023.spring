@@ -1,4 +1,4 @@
-package controller;
+package imb.pr3.lh.controller;
 
 import java.util.ArrayList;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import entity.Estacion;
-import service.IEstacion;
+import imb.pr3.lh.entity.Estacion;
+import imb.pr3.lh.service.IEstacion;
 
 
 //http://localhost:8081/app/v1/estacion
@@ -24,6 +24,11 @@ import service.IEstacion;
 public class EstacionController {
 	
 	private IEstacion EstacionService;
+	
+	
+    public EstacionController(IEstacion EstacionService) {
+	      this.EstacionService = EstacionService;
+	}
 	
 	@GetMapping("/estacion")
 	public APIResponse<List<Estacion>> mostrarTodos(){
@@ -42,26 +47,21 @@ public class EstacionController {
 	}
 	
 	
-	@GetMapping("/{id}")
-	public APIResponse<Estacion> mostrarEstacionPorId(@PathVariable Integer id) {
-		List<String> messages = new ArrayList<>();
-		Integer status;
-			//message.add("se muestra el listado correctamente");
-		Estacion EstacionPorId = EstacionService.mostrarEstacionPorId(id);
-		if(EstacionPorId == null) {
-			//Devolver un error
-			messages.add("No se encuentra una estacion con el ID propocionado");
-			status = 404;
-			
-		}else {
-			status=200;
-			//messages.add("No se encuentra una estacion con el ID proporcionado")
-		}
-		APIResponse<Estacion> response = new APIResponse<>(200, messages, EstacionPorId);
-		
-		return response;
-							
-	}
+	@GetMapping("/estacion/{id}")
+    public APIResponse<Estacion> mostrarEstacionPorId(@PathVariable Integer id) {
+        List<String> messages = new ArrayList<>();
+        Integer status;
+
+        Estacion EstacionPorId = EstacionService.mostrarEstacionPorId(id);
+        if (EstacionPorId == null) {
+            messages.add("No se encuentra una estacion con el ID proporcionado");
+            status = 404;
+        } else {
+            status = 200;
+        }
+        APIResponse<Estacion> response = new APIResponse<>(status, messages, EstacionPorId);
+        return response;
+    }
 	
 	@PostMapping("/")
 	public Estacion crearEstacion(@RequestBody Estacion estacion) {
@@ -69,13 +69,13 @@ public class EstacionController {
 		return estacion;
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/estacion/{id}")
 	public Estacion modificarEstacion(@RequestBody Estacion estacion) {
 		EstacionService.modificarEstacion(estacion);
 		return estacion;
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/estacion/{id}")
 	public void eliminarEstacion(@PathVariable("id") Integer id) {
 		EstacionService.eliminarEstacion(id);
 		}

@@ -4,9 +4,10 @@ import java.util.List;
 import imb.pr3.lh.entity.Catalogo;
 
 public interface ICatalogoService {
-	List<Catalogo> mostrarTodos();
-	List<Catalogo> mostrarPorld();
-	List<Catalogo> crear();
-	List<Catalogo> modificar();
-	List<Catalogo> eliminar();
+
+    public List<Catalogo> buscarTodos();
+    public Catalogo buscarPorId(Integer id);
+    public Catalogo guardar (Catalogo catalogo);
+    public void eliminar(Integer id);
+    public boolean existe(Integer id);
 }

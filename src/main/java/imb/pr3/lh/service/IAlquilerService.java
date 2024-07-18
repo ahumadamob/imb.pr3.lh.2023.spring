@@ -6,9 +6,9 @@ import java.util.List;
 import imb.pr3.lh.entity.Alquiler;
 
 public interface IAlquilerService {
-	public List<Alquiler> mostrarAlquileres();
-	public Alquiler mostrarAlquilerPorId(Integer id);
-    public void crearAlquiler(Alquiler alquiler);
-    public void modificarAlquiler(Alquiler alquiler);
-    public void eliminarAlquiler(Integer id);
+	public List<Alquiler> buscarTodos();
+	public Alquiler buscarPorId(Integer id);
+    public Alquiler guardar(Alquiler alquiler);
+    public void eliminar(Integer id);
+    public boolean existe (Integer id);
 }

@@ -1,4 +1,4 @@
-package imb.pr3.lh2023;
+package imb.pr3.lh;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

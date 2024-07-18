@@ -6,14 +6,14 @@ import imb.pr3.lh.entity.MedioDePago;
 
 public interface IMedioDePago {
 
-	public List<MedioDePago> mostrarMedioDePago();
+	public List<MedioDePago> buscar();
 
-	public MedioDePago mostrarMedioDePagoPorId(Integer id);
+	public MedioDePago buscarPorId(Integer id);
 
-	public void crearMedioDePago(MedioDePago medioDePago);
+	public MedioDePago guardar(MedioDePago medioDePago);
 
-	public void modificarMedioDePago(MedioDePago medioDePago);
-
-	public void eliminarMedioDePago(Integer id);
+	public void eliminar(Integer id);
+	
+	public boolean existe(Integer id);
 
 }

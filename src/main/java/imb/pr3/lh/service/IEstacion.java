@@ -1,8 +1,8 @@
-package service;
+package imb.pr3.lh.service;
 
 import java.util.List;
 
-import entity.Estacion;
+import imb.pr3.lh.entity.Estacion;
 
 public interface IEstacion {
 	

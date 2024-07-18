@@ -1,14 +1,16 @@
-package service_JPA;
+package imb.pr3.lh.service.jpa;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import entity.Estacion;
-import repository.EstacionRepository;
-import service.IEstacion;
+import imb.pr3.lh.entity.Estacion;
+import imb.pr3.lh.repository.EstacionRepository;
+import imb.pr3.lh.service.IEstacion;
 
+@Service
 public class EstacionService implements IEstacion{
 
 	@Autowired
