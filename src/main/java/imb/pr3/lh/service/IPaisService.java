@@ -20,4 +20,7 @@ public interface IPaisService {
 	
 	
 	public boolean existe(Integer id);
+
+
+	public List<Pais> buscarPorIdiomaOficial(String idiomaOficial);
 }

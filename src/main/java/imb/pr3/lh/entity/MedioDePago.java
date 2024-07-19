@@ -13,7 +13,9 @@ public class MedioDePago {
 	private Integer id;
 	@NotBlank
 	private String nombre;
+	private boolean activo;
 	private boolean habilitado;
+
 
 	public Integer getId() {
 		return id;
@@ -37,6 +39,14 @@ public class MedioDePago {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 }

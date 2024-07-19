@@ -15,5 +15,7 @@ public interface IMedioDePago {
 	public void eliminar(Integer id);
 	
 	public boolean existe(Integer id);
+	
+	public List<MedioDePago> buscarPorActivo(boolean activo);
 
 }
