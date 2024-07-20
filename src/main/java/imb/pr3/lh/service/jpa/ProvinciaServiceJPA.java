@@ -4,14 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import imb.pr3.lh.entity.Provincia;
 import imb.pr3.lh.repository.ProvinciaRepository;
 import imb.pr3.lh.service.IProvinciaService;
 
+@Service
 public class ProvinciaServiceJPA implements IProvinciaService {
 	
-@ Autowired
+@Autowired
 private ProvinciaRepository provinciaRepository;
 
 	@Override
