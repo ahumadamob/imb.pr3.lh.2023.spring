@@ -2,6 +2,7 @@ package imb.pr3.lh.service.jpa;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import imb.pr3.lh.entity.Cliente;
@@ -11,6 +12,7 @@ import imb.pr3.lh.service.IClienteService;
 @Service
 public class ClienteService implements IClienteService {
 	
+	@Autowired
 	private ClienteRepository clirepo;
 
 	@Override
