@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,12 +24,8 @@ import imb.pr3.lh.service.IEstacion;
 @RequestMapping("/app/v1")
 public class EstacionController {
 	
+	@Autowired
 	private IEstacion EstacionService;
-	
-	
-    public EstacionController(IEstacion EstacionService) {
-	      this.EstacionService = EstacionService;
-	}
 	
 	@GetMapping("/estacion")
 	public APIResponse<List<Estacion>> mostrarTodos(){
