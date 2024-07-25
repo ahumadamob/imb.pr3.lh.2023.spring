@@ -41,5 +41,9 @@ public class AlquilerService implements IAlquilerService {
 	public boolean existe(Integer id) {
 		 return id != null && alquilerRepository.existsById(id);
 	}
-
+	
+	@Override
+	public List<Alquiler> buscarPorIdCliente(Integer clienteId) {
+	    return alquilerRepository.findAllByClienteId(clienteId);
+	}
 }

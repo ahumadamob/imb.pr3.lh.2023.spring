@@ -67,6 +67,14 @@ public class AlquilerController {
 			   : ResponseUtil.badRequest("No existe el alquiler con el id ingresado");
 	}
 	
+	// Método para buscar alquileres por ID de cliente
+    @GetMapping("/cliente/{clienteId}")
+    public ResponseEntity<APIResponse<List<Alquiler>>> buscarAlquileresPorIdCliente(@PathVariable("clienteId") Integer clienteId) {
+        List<Alquiler> alquileres = alquilerService.buscarPorIdCliente(clienteId);
+        return alquileres.isEmpty() ? ResponseUtil.notFound("No se encontraron alquileres para el cliente con el ID proporcionado")
+                : ResponseUtil.success(alquileres);
+    }
+	
 	//Excepciones
 	
 	@ExceptionHandler(Exception.class)
