@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Alquiler {
@@ -28,14 +28,14 @@ public class Alquiler {
   @JoinColumn(name = "estacion_salida_id")
   private Estacion estacionSalida;
   
-  @NotBlank(message = "La fecha y hora de salida no pueden estar vacios")
+  @NotNull(message = "La fecha y hora de salida no pueden estar vacios")
   private LocalDateTime fechaHoraSalida;
   
   @ManyToOne
   @JoinColumn(name = "estacion_llegada_id")
   private Estacion estacionLlegada;
   
-  @NotBlank(message = "La fecha y hora de llegada no pueden estar vacios")
+  @NotNull(message = "La fecha y hora de llegada no pueden estar vacios")
   private LocalDateTime fechaHoraLlegada;
 
   public Integer getId() {

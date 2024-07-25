@@ -52,20 +52,7 @@ public class AlquilerController {
 		return alquilerService.existe(alquiler.getId()) ? ResponseUtil.success(alquilerService.guardar(alquiler))
 				: ResponseUtil.badRequest("No se pudo actualizar el alquiler, el id ingresado no ha sido creado");
 	}
-	// Método para eliminar un Alquiler mediante una solicitud HTTP DELETE en una URL que utiliza "id" como parámetro pasado en el body de la consulta.
-	@DeleteMapping("{id}")
-	// Definición del método "eliminarAlquiler" que recibe un parámetro de tipo "id" de tipo Integer.
-	// La anotación "@PathVariable" indica que el valor de "id" se tomará de la URL.
-	// Devuelve un objeto ResponseEntity que contiene un objeto de tipo APIResponse que a su vez contiene un objeto de tipo Alquiler.
-	public ResponseEntity<APIResponse<Alquiler>> eliminarAlquiler(@PathVariable("id") Integer id){
-	// Se verifica si el ID del alquiler existe llamando al método "existe" del servicio "alquilerService".
-	// Si la condición "alquilerService.existe(id)" es verdadera, significa que el alquiler existe, por lo tanto, se elimina al alquiler identificado por el ID.
-	// En este caso, no se devuelve ningún contenido, solo se confirma la eliminación exitosa.
-	   return alquilerService.existe(id) ? ResponseUtil.success(null)
-	// Si la condición "alquilerService.existe(id)" es falsa, significa que el alquiler no existe.
-    // En este caso, se genera una respuesta HTTP de error BadRequest con un mensaje que indica que el alquiler no existe.
-			   : ResponseUtil.badRequest("No existe el alquiler con el id ingresado");
-	}
+	
 	
 	// Método para buscar alquileres por ID de cliente
     @GetMapping("/cliente/{clienteId}")
@@ -75,6 +62,16 @@ public class AlquilerController {
                 : ResponseUtil.success(alquileres);
     }
 	
+    @DeleteMapping("{id}")
+    public ResponseEntity<APIResponse<Alquiler>> eliminarAlquiler(@PathVariable("id") Integer id) {
+        if (alquilerService.existe(id)) {
+            alquilerService.eliminar(id); // Llama al método para eliminar el alquiler
+            return ResponseUtil.success("Eliminacion correcta del alquiler"); // Confirmación de eliminación exitosa
+        } else {
+            return ResponseUtil.badRequest("No existe el alquiler con el id ingresado"); // Error si no existe
+        }
+    }
+    
 	//Excepciones
 	
 	@ExceptionHandler(Exception.class)
