@@ -12,4 +12,5 @@ public interface IAlquilerService {
     public void eliminar(Integer id);
     public boolean existe (Integer id);
     public List<Alquiler> buscarPorIdCliente(Integer clienteId);
+    public List<Alquiler> buscarPorEstacionSalida(Integer estacionSalidaId);
 }

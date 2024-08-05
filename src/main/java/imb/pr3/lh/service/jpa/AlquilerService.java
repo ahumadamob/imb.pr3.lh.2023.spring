@@ -46,4 +46,9 @@ public class AlquilerService implements IAlquilerService {
 	public List<Alquiler> buscarPorIdCliente(Integer clienteId) {
 	    return alquilerRepository.findAllByClienteId(clienteId);
 	}
+	
+	@Override
+	public List<Alquiler> buscarPorEstacionSalida(Integer estacionSalidaId) {
+        return alquilerRepository.findByEstacionSalidaId(estacionSalidaId);
+    }
 }

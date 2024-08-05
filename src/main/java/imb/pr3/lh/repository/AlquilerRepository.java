@@ -9,4 +9,5 @@ import java.util.List;
 public interface AlquilerRepository extends JpaRepository<Alquiler, Integer> {
 	// Método personalizado para buscar alquileres por ID de cliente
     List<Alquiler> findAllByClienteId(Integer clienteId);
+    List<Alquiler> findByEstacionSalidaId(Integer estacionSalidaId);
 }

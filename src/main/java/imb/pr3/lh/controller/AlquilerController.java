@@ -72,6 +72,11 @@ public class AlquilerController {
         }
     }
     
+    @GetMapping("/estacion-salida/{estacionSalidaId}")
+    public ResponseEntity<List<Alquiler>> buscarAlquileresPorEstacionSalida(@PathVariable Integer estacionSalidaId) {
+        List<Alquiler> alquileres = alquilerService.buscarPorEstacionSalida(estacionSalidaId);
+        return ResponseEntity.ok(alquileres);
+    }
 	//Excepciones
 	
 	@ExceptionHandler(Exception.class)
