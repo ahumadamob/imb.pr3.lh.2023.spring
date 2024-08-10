@@ -21,6 +21,15 @@ public class Cliente {
 	private String email;
 	private String telefono;
 	private Integer provinciaId;
+	private boolean preferencial;
+	
+	
+	public boolean isPreferencial() {
+		return preferencial;
+	}
+	public void setPreferencial(boolean preferencial) {
+		this.preferencial = preferencial;
+	}
 	public Integer getId() {
 		return id;
 	}

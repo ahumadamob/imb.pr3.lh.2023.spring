@@ -34,6 +34,16 @@ public class ClienteController {
     public Cliente mostrarClientePorId(@PathVariable Integer id) {
         return clienteservice.mostrarClientePorId(id);
     }
+    
+    @GetMapping("/Cliente/clientes-preferenciales")
+    public List<Cliente> mostrarClientesPreferenciales() {
+        return clienteservice.obtenerClientesPreferenciales();
+    }
+
+    @GetMapping("/Cliente/clientes-no-preferenciales")
+    public List<Cliente> mostrarClientesNoPreferenciales() {
+        return clienteservice.obtenerClientesNoPreferenciales();
+    }
 	
 	@PostMapping("/Cliente")
     public Cliente crearICliente(@RequestBody Cliente cli) {
@@ -51,6 +61,5 @@ public class ClienteController {
 	public void eliminarICliente(@PathVariable("id") Integer id) {
 		clienteservice.eliminarICliente(id);
 	}
-	
 
 }

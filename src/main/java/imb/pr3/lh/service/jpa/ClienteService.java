@@ -40,6 +40,17 @@ public class ClienteService implements IClienteService {
 	public void eliminarICliente(Integer id) {
 		clirepo.deleteById(id);
 	}
-
+	
+	@Override
+	public List<Cliente> obtenerClientesPreferenciales() {
+	    return clirepo.findByPreferencial(true);
+	}
+	
+	@Override
+	public List<Cliente> obtenerClientesNoPreferenciales() {
+	    return clirepo.findByPreferencial(false);
+	}
+	
+	
 }
 
